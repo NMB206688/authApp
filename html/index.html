@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Home</title>
+</head>
+<body>
+    <div  class="message-box"></div>
+        <h1 id="welcome-message-box"></h1>
+        <div>
+            <a href="/private">Go to Private Page</a>
+        </div>
+        <div> <a href="/logout">Log out </a> </div>
+    </div>
+            
+    
+
+    
+    
+    <script>
+        const req = new XMLHttpRequest();
+        req.onreadystatechange = function() {
+            if (req.readyState == 4 && req.status == 200) {
+                
+                    const user = JSON.parse(req.response).user;
+                    document.getElementById('welcome-message').innerText = 'Welcome ${user.user.username}!'';
+                
+            }
+        };
+        req.open('GET', 'http://localhost:3000/user', true);
+        req.send();
+    </script>
+</body>
+</html>

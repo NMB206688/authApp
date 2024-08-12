@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/login" method="post">
+        
+        <div class="field">
+            <label >username:</label>
+            <input type="text"  name="username" required />
+        </div>
+        <div class="field">
+            <label for="password">Password:</label>
+            <input type="password"  name="password" required />
+        </div>
+        <div class="field "><input class="submit-btn" type="submit" value="Submit" required /></div>
+        
+        <label id="error-message" ></label>
+    </form>
+    
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const infoMessage = params.get('info');
+        if (infoMessage) {
+            const errorMessageElement = document.getElementById('error-message');
+            errorMessageElement.innerText = infoMessage;
+            errorMessageElement.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
