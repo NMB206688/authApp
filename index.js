@@ -26,7 +26,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        secure: false, // Set to true in production with HTTPS
+        maxAge: 60000  // Set to 60 seconds for testing purposes
+    }
 }));
 
 // Initialize Passport and restore authentication state, if any, from the session
